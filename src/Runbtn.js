@@ -19,7 +19,7 @@ function handleRun(props) {
         window.alert("协议输入有误，系统无法解读");
         return null;
       }
-      analyseReturn(res.data, props);
+      analyseReturn(data, props);
     },
     (err) => {
       window.alert(`err:${err}`);
@@ -28,9 +28,7 @@ function handleRun(props) {
 }
 
 function analyseReturn(res, props) {
-  let arr = JSON.parse(res)["result"].split("\n");
-
-  console.log(arr);
+  let arr = res.split("\n");
 
   let protocols = [];
   let counter = 1;
