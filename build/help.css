@@ -1,0 +1,128 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #f3f3ef;
+}
+.checked {
+  color: #3eaf7c !important;
+}
+pre {
+  background: #f0f0f0;
+}
+img {
+  display: block;
+  margin: 0 50px;
+}
+a {
+  padding: 2px 0;
+  color: #2c3e50;
+  text-decoration: none;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  height: 59px;
+  line-height: 59px;
+  border-bottom: solid 3px #17a0b6;
+}
+.header div {
+  background: url("logo.svg");
+  background-repeat: no-repeat;
+  width: 1220px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-position: left;
+  background-size: 35px;
+  text-indent: 2.2em;
+}
+.header div .title {
+  font-size: 1.4em;
+  font-weight: 700;
+  text-decoration: none;
+  color: #17a0b6;
+}
+.header div .a_help {
+  float: right;
+  color: #333;
+  margin-right: 20px;
+}
+.hold {
+  width: 1220px;
+  margin: 0px auto;
+  overflow: hidden;
+}
+.hold .left,
+.hold .right {
+  background-color: #f7f7f7;
+  background-color: white;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 0.25rem;
+}
+.hold .right {
+  float: right;
+  width: 877px;
+  padding: 80px 20px 0px 20px;
+}
+.hold .right h2,
+.hold .right h3 {
+  padding-top: 4.6rem;
+  margin-top: -3.6rem;
+  color: #2c3e50;
+}
+.hold .right h2 {
+  border-bottom: 1px solid #eaecef;
+}
+.hold .right p {
+  font-size: 16px;
+  color: #2c3e50;
+  line-height: 1.7;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.hold .left {
+  box-sizing: border-box;
+  padding: 20px;
+  position: fixed;
+  top: 62px;
+  bottom: 0;
+  float: left;
+  width: 280px;
+  background-color: #f7f7f7;
+  background-color: white;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  overflow: auto;
+}
+.hold .left ul {
+  list-style: none;
+}
+.hold .left ul a {
+  display: inline-block;
+  padding: 2px 0;
+  color: #2c3e50;
+  text-decoration: none;
+}
+.hold .left ul a:hover {
+  color: #3eaf7c;
+}
+.hold .left > ul > li > a {
+  font-size: 1.1em;
+  line-height: 1.7;
+  font-weight: 700;
+}
+.hold .left > ul > li > ul {
+  display: none;
+}
+.hold .left > ul > li > ul > li {
+  text-indent: 0.5em;
+}
+.hold .left > ul > li > ul > li > ul > li {
+  text-indent: 1em;
+}

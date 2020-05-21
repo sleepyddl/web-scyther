@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./help.css" />
+        <title>协议分析器 - 帮助文档</title>
+    </head>
+    <body>
+        <div class="header">
+            <div>
+                <a href="./" class="title">
+                    协议分析器
+                </a>
+
+                <a href="./help.html" class="a_help">
+                    帮助文档
+                </a>
+            </div>
+        </div>
+        <div class="hold">
+            <div class="left">
+                <ul>
+                    <li>
+                        <a href="#preface" class="checked">前言</a>
+                        <ul></ul>
+                    </li>
+                    <li>
+                        <a href="#Quick_start_tutorial">快速入门</a>
+                        <ul></ul>
+                    </li>
+                    <li>
+                        <a href="#input_language">输入语言</a>
+                        <ul>
+                            <li>
+                                <a href="#A_minimal_input_file">
+                                    一个简短的输入文件
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#Terms">项</a>
+                                <ul>
+                                    <li>
+                                        <a href="#Atomic_terms">原子项</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Pairing">对</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Symmetric_keys">对称密钥</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Asymmetric_keys">
+                                            非对称密钥
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#Hash_functions">哈希函数</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Predened_types">预定义类型</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Usertypes">创建新类型</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Events">事件</a>
+                                <ul>
+                                    <li>
+                                        <a href="#Receive_and_send_events">
+                                            接收和发送事件
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="#Claim_events_and_Security_properties"
+                                        >
+                                            声明事件和安全属性
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#Internal_computation">
+                                            内部计算/模式匹配事件
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Role_definitions">角色定义</a>
+                            </li>
+                            <li>
+                                <a href="#Protocol_definitions">协议定义</a>
+                            </li>
+
+                            <li>
+                                <a href="#Global_declarations">全局声明</a>
+                            </li>
+
+                            <li>
+                                <a href="#Miscellaneous">其他</a>
+                                <ul>
+                                    <li>
+                                        <a href="#Macro">宏</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Include">Include</a>
+                                    </li>
+                                    <li>
+                                        <a href="#one_role_per_agent">
+                                            一个角色一个代理
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Language_BNF">BNF语言</a>
+                                <ul>
+                                    <li>
+                                        <a href="#Input_file_BNF">输入文件</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Protocols_BNF">协议</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Roles_BNF">角色</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Events_BNF">事件</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Declarations_BNF">声明</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Terms_BNF">项</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#modeling_security_protocols">安全协议建模</a>
+                        <ul>
+                            <li>
+                                <a href="#Introduction">介绍</a>
+                            </li>
+                            <li>
+                                <a href="#Example">例子</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#specifying_security_properties">安全属性</a>
+                        <ul>
+                            <li>
+                                <a href="#Specifying_secrecy">详述保密</a>
+                            </li>
+                            <li>
+                                <a href="#Specifying_authentication_properties"
+                                    >详述认证属性</a
+                                >
+                                <ul>
+                                    <li>
+                                        <a href="#Aliveness">活性</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Non-injective_synchronisation"
+                                            >非内射同步</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#Non-injective_agreement"
+                                            >非内射一致</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#Agreement_over_data"
+                                            >数据一致性</a
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#Using_the_Scyther_tool">使用分析工具</a>
+                        <ul>
+                            <li>
+                                <a href="#Results">结果</a>
+                            </li>
+                            <li>
+                                <a href="#Bounding_the_statespace"
+                                    >限定状态空间</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#Attack_graphs">攻击图</a>
+                                <ul>
+                                    <li>
+                                        <a href="#Runs">运行</a>
+                                    </li>
+                                    <li>
+                                        <a href="#Communication events"
+                                            >交流事件</a
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#reference">参考</a>
+                        <ul></ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <h2 id="preface">前言</h2>
+                <p>
+                    此系统是基于Scyther工具的分析器，在帮助文档中主要解释输入语言的细节，解释如何建立基本的协议，以及如何有效的使用此工具。建议在阅读此帮助说明之前，对参考[1]做阅读，了解其底层协议模型，安全属性规范以及算法详细描述。
+                </p>
+                <p>
+                    此帮助文档的内容是对参考[3]的部分翻译。深入了解Scyther工具使用请点击参考[5]。如若作者对内容有理解不到或者理解有误，请多多包涵，联系邮箱longwayya@163.com
+                </p>
+
+                <h2 id="Quick_start_tutorial">快速入门</h2>
+                <p>
+                    此协议分析工具将协议描述作为输入，协议描述中详细阐述了预期的安全属性(指安全声明)，此工具会对这些属性进行评估。
+                </p>
+                <p>
+                    这里介绍一个例子来入门此工具。我们将验证Needham-Schroeder协议，并研究对它的攻击。在经典协议下拉框中选择ns3协议，系统会自动将其输入到输入框中，通过点击运行按钮，运行结果窗口将会显示做的声明以及其验证结果，这里可以找到协议是正确的，还是错误的。最重要的是，如果协议声明不正确，则存在至少一个对协议的攻击。claim旁边显示了一个按钮，按此按钮可以查看对claim的攻击。
+                </p>
+                <h2 id="input_language">输入语言</h2>
+                <p>
+                    输入语言是基于类似C/Java的语法。该语言的主要目的是描述由一组角色定义的协议。角色又由一系列事件定义，其中大多数事件表示元素(terms)的发送或接收。我们将在下面的章节中描述这些元素。
+                </p>
+                <p>
+                    注释可以以//或#（对于单行注释）开头，也可以由/*和*/（对于多行注释）括起。注意，不能嵌套多行注释。
+                </p>
+
+                <p>
+                    忽略元素之间的任何空白。因此，可以使用空白（空格、制表符、换行符）来提高可读性。
+                    基本标识符由一组字母数字字符中的字符串以及符号^和-。
+                </p>
+                <p>
+                    该语言区分大小写，因此NS3与ns3的标识符不同。
+                </p>
+                <h3 id="A_minimal_input_file">一个简短的输入文件</h3>
+
+                <p>输入文件中的核心元素是协议定义。最简单的例子如下：</p>
+                <pre>
+    protocol ExampleProtocol(I,R) {
+        role I { };
+        role R { };
+    };                </pre
+                >
+                <p>
+                    在上面，我们定义了一个名为“ExampleProtocol”的协议，它有两个角色，“I”和“R”，在协议名称后的括号中列出。注意，我们还没有定义这些角色的行为，这些行为是在对应的role
+                    I和role R命令后面的花括号中定义的。
+                </p>
+                <h3 id="Terms">项</h3>
+                <p>在最基本的层次上，Scyther操作项。</p>
+                <h3 id="Atomic_terms">原子项</h3>
+                <p>
+                    原子项可以是任何标识符，通常是一系列字母数字字符。
+                </p>
+                <p>
+                    原子项可以通过诸如 对 和 加密 之类的运算符组合成更复杂的项。
+                </p>
+                <p>&nbsp;&nbsp;· 常量</p>
+                <p>&nbsp;&nbsp;· 新生成的值</p>
+                <p>
+                    许多安全协议依赖于生成随机值。可以通过在角色定义中使用fresh声明来指定它们。例如，要生成Nonce类型的随机值Na，我们指定：
+                </p>
+                <pre>
+
+    role X(...) {
+        fresh Na: Nonce;
+
+        send_1(X,Y,Na);
+    }
+    </pre
+                >
+                <p>&nbsp;&nbsp;· 变量</p>
+                <p>
+                    代理可以使用变量来存储接收到的项。例如，要将nonce接收到名为Na的变量中，我们指定：
+                </p>
+
+                <pre>
+
+    role Y(...) {
+        var Na: Nonce;
+    
+        recv_1(X,Y,Na);
+    }
+    </pre
+                >
+                <p>
+                    新生成的值和变量（如Na）的本地声明都是角色的本地声明。因此，可以在一个角色中指定新生成nonce类型的
+                    Na，在另一个角色中指定变量Na，而不发生任何冲突。变量是死板的：在执行发生它们的第一个接收事件之后，会为它们分配一个值。此值以后不能更改。
+                </p>
+                <p>
+                    变量必须首先出现在接收事件中：不允许在发送事件中使用未初始化的变量。
+                </p>
+                <h3 id="Pairing">对</h3>
+                <p>
+                    任何两个项都可以组合成一个项对：我们为项对x和y写(x,y)。它也可以写n元组为(x,y,z)，这被解释为((x,y),z)。
+                </p>
+                <h3 id="Symmetric_keys">对称密钥</h3>
+                <p>
+                    任何项都可以作为对称加密的密钥。
+                </p>
+                <p>
+                    使用项 kir 对 ni 进行加密，写为：
+                </p>
+                <pre>
+    
+    { ni }kir
+                </pre>
+                <p>
+                    除非kir被明确定义为非对称密钥对的一部分（下面会解释），否则这将被解释为对称加密。
+                </p>
+                <p>
+                    对称密钥基础设施是预定义的：k(X,Y)表示X和Y之间共享的长期对称密钥。
+                </p>
+
+                <h3 id="Asymmetric_keys">非对称密钥</h3>
+                <p>
+                    公钥基础设施（PKI）是预先定义的：sk(X)表示X的长期私钥，pk(X)表示相应的公钥。
+                </p>
+                <p>
+                    例如，考虑以下项。它表示用项pk(I)对项ni进行加密。在通常的约定下，这意味着
+                    发起者的nonce（指项ni）是用发起者的公钥加密的。
+                </p>
+                <pre>
+   
+    { ni }pk(I)         
+                </pre>
+                <h3 id="Hash_functions">哈希函数</h3>
+                <p>
+                    哈希函数本质上是用一个函数的加密，任何人都不知道这个函数的逆。
+                </p>
+                <p>
+                    通过标识符的全局声明，可以使用它们作为哈希函数，例如：
+                </p>
+                <pre>
+    
+    hashfunction H1;
+                    </pre
+                >
+                <p>
+                    由于所有代理和协议都应该能够访问这样一个函数，因此哈希函数的声明通常是全局的，即在任何协议定义之外定义的。
+                </p>
+                <p>
+                    一旦声明，它们就可以用于协议消息中，例如：
+                </p>
+                <pre>
+    
+    Hi(ni)
+                </pre>
+                <h3 id="Predened_types">预定义类型</h3>
+                <p>
+                    &nbsp;&nbsp;· Agent : 用于代理的类型。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Function :
+                    一个函数项的特殊类型，该函数项可以将一系列项作为参数。默认情况下，它的行为类似于散列函数：给定项h(x)，其中h是函数类型，则不可能派生x。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Nonce : 通常使用的标准类型，因此在工具中定义。
+                </p>
+                <p>
+                    &nbsp;&nbsp; · Ticket : Ticket类型的变量可以用任何项替换。
+                </p>
+                <h3 id="Usertypes">创建新类型</h3>
+                <p>定义新类型是可能的。这可以使用 usertype 命令完成：</p>
+                <pre>
+
+    usertype MyAtomicMessage;
+
+    protocol X(I,R) {
+        role I {
+        var y: MyAtomicMessage;
+        recv_1(I,R, y );
+    }
+                </pre>
+
+                <p>
+                    这种声明的效果是，新类型的变量只能用该类型的消息 m
+                    实例化，即，已由全局声明 const m : MyAtomicMessage 或
+                    角色中新生成的 fresh m : MyAtomicMessage 。
+                </p>
+                <p>
+                    一般来说，如果更多地了解哪些信息可能统一或不统一，那么该工具可以执行得更好。通过定义用户类型，建模者可以通知工具，变量只能用该类型的术语实例化，而不能用Nonce类型的术语实例化。从概念上讲，人们总是可以为每个变量类型编写Ticket（符合所有可能的信息），但随后人们可能会发现错误的攻击（实际上运算确实检查了消息的类型），并且工具将不太可能验证属性（对于无限数量的运行）。
+                </p>
+
+                <h3 id="Events">事件</h3>
+                <h3 id="Receive_and_send_events">
+                    接收和发送事件
+                </h3>
+                <p>
+                    recv和send事件分别标记接收和发送消息。
+                </p>
+                <p>
+                    注意，在一些协议描述文件中，可能会找到read关键字：这是过时的语法，可以安全地由recv替换。
+                </p>
+                <p>
+                    在大多数情况下，每个send事件都有一个对应的recv事件。我们通过给这些事件以相同的标签来指定这种对应关系，用下标表示。
+                </p>
+                <p>
+                    对于某些协议，我们可能希望模拟直接向对手发送或接收，在这种情况下，我们没有相应的事件。如果send或recv事件没有对应的事件，
+                    将输出警告。为了支持这个警告，标签的前缀可以是 ！，例如：
+                </p>
+                <pre>
+
+    send_!1(I,I, LeakToAdversary );      
+                </pre>
+                <h3 id="Claim_events_and_Security_properties">
+                    声明事件和安全属性
+                </h3>
+                <p>
+                    声明事件在角色规范中用于为预期的安全属性建模。例如，下面的声明事件模型表明Ni是机密的。
+                </p>
+                <pre>
+
+    claim(I, Secret, Ni);
+                </pre>
+                <p>
+                    有几种预定义的声明类型。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Secret :
+                    此声明需要参数项。本术语的保密性如参考[1]中所定义。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· SKR : 这项声明的核实条件相当于 Secret 声明。
+                    此声明的目的是另外将参数项标记为
+                    session-key。结果是，使用session-key
+                    reveal敌手规则将显示参数项。 如果未启用session-key
+                    reveal规则，则此声明与机密声明相同。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Alive : （所有角色的）Aliveness
+                    参考[4]所定义的。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Weakagree : （所有角色的）弱一致性
+                    定义见参考[4]。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Commit，Runing :
+                    通过插入适当的信号声明，一组数据项上角色的非内射协议可以被定义。在这种情况下，Commit标记有效的声明，其正确性要求在跟踪中存在相应的Running信号。这些声明用于
+                    agreement over data 模型，第7.2.4节对此进行了解释。 Nisynch
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Nisynch : 非内射同步，定义见[1]。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Niagree : 非内射协定，定义见[1]。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Reachable :
+                    当这个claim被验证时，将检查这个claim是否可以到达。这是正确的的如果存在一个轨迹，在这个声明发生。这有助于检查协议规范中是否没有明显的错误，并且实际上在使用Scyther的--check模式时插入。
+                </p>
+                <p>
+                    &nbsp;&nbsp;· Empty :
+                    此声明将不被验证，而被忽略。只有当Scyther被用作其他验证手段的后端时，它才有用。有关更多信息，请参阅第10节。
+                </p>
+                <h3 id="Internal_computation">
+                    内部计算/模式匹配事件
+                </h3>
+                <p>
+                    我们将[1]中的基本事件集扩展为两个可用于内部计算建模的事件。
+                </p>
+                <h5>匹配事件</h5>
+                <p>
+                    第一个新事件是match事件，用于指定模式匹配，即：
+                </p>
+                <pre>
+
+    match(pt,m)  
+                </pre>
+                <p>
+                    在运算方面，如果存在一个良好类型的代换σ，使
+                    σpt＝m，则此事件可以被执行。执行时，替换将应用于角色的其余事件。
+                </p>
+                <p>
+                    此事件可用于对各种构造建模，例如相等测试、延迟解密、检查承诺。它们还可用于对内部计算建模，以简化规范，例如：
+                </p>
+                <pre>
+
+    var X: Nonce;
+    var Y;
+    recv(R,I, X);
+    match(Y, hash(X,I,R) );
+    send(I,R, Y,{ Y }sk(I) );       
+                </pre>
+                <p>
+                    在上面的例子中，我们可以在整个规范中将Y替换为hash（X，I，R），但是这个版本避免复制。
+                </p>
+                <h5>不匹配事件</h5>
+
+                <p>
+                    第二个新事件是 not match 事件，用于指定模式匹配，即
+                </p>
+
+                <pre>
+                  
+    not match(pt,m)             
+                </pre>
+                <p>
+                    操作解释与前一事件相反。如果没有替换σ使得σpt=m，则可以执行事件。
+                    此事件可用于建模，例如不等式约束。例如，默认情况下，执行模型允许代理自己执行会话。在某些情况下，我们希望排除这种行为，因为协议不允许这样做。例如，
+                </p>
+                <pre>
+
+    role A {
+        not match(A,B);
+        send (A,B, m1);
+    }
+                </pre>
+                <p>
+                    建立一个其实例仅向其他代理发送消息的角色模型。
+                </p>
+                <p>
+                    作为一种更高级的用法，match和not
+                    match可以在两个角色中一起使用，这两个角色具有一个通用的事件开始序列
+                    if...then...else 结构。
+                </p>
+                <h3 id="Role_definitions">角色定义</h3>
+                <p>
+                    角色定义是事件序列，即声明、发送、接收或声明事件。
+                </p>
+                <pre>
+
+    role Server {
+        var x,y,z: Nonce;
+        fresh n,m: Nonce;
+
+        send_1(Server,Init, m,n );
+        recv_2(Init,Server, x,y, { z }pk(Server) );
+    }
+                </pre>
+                <h3 id="Protocol_definitions">协议定义</h3>
+                <p>
+                    议定义将角色序列作为参数，然后在其主体中定义。
+                </p>
+                <pre>
+
+    protocol MyProt(Init,Resp,Server){
+        role Init {
+            ...
+        }
+        role Resp {
+            ...
+        }
+        role Server {
+            ...
+        }
+    }
+                </pre>
+                <h5>
+                    助手协议
+                </h5>
+                <p>
+                    可以在协议名称前加上“@”符号。这对协议模型和分析结果没有影响。“@”仅在呈现输出图时使用：其目的是将协议标记为“帮助程序协议”。这样的协议通常用于建模
+                    其他敌方能力，见第10节示例。当呈现输出图时，将助Scyther助手协议的角色实例折叠为单个节点。这可以使图形更具可读性。
+                </p>
+                <h5>对称角色协议</h5>
+                <p>
+                    一些对手妥协规则，如SKR和LKRaftercorrect依赖于合作功能。对于角色和密钥计算完全对称的协议（如HMQV），这不是合适的合作函数。要使用正确的合作功能，需要将协议注释为对称角色协议。这将指示Scyther使用适当的合作功能。
+                </p>
+                <pre>
+    symmetric-role protocol MyProt(Init,Resp){
+        role Init {
+            ...
+        }
+        role Resp {
+            ...
+        }
+    }
+                </pre>
+                <h3 id="Global_declarations">全局声明</h3>
+                <p>
+                    在许多应用中使用全局常量。例如，它们包括字符串常量、标签或协议标识符。
+                    它们的建模和使用方式如下：
+                </p>
+                <pre>
+    
+    usertype String;
+    const HelloWorld: String;
+
+    protocol hello(I,R){
+        role I {
+        send_1(I,R, HelloWorld);
+        }
+        role R {
+        recv_1(I,R, HelloWorld);
+        }
+    }
+                </pre>
+                <h3 id="Miscellaneous">其他</h3>
+                <h3 id="Macro">宏</h3>
+                <p>
+                    可以定义宏，即特定项的缩写。用于定义这些缩写的语法如下：
+                </p>
+                <pre>
+
+    macro MyShortCut = LargeTerm;
+                </pre>
+                <p>
+                    例如，对于包含复杂消息或重复元素的协议，可以使用宏来简化协议规范：
+                </p>
+                <pre>
+
+    hashfunction h;
+
+    protocol macro-example-one(I,R) {
+        role I {
+            fresh nI: Nonce;
+            macro m1 = h(I,ni);
+
+            send_1(I,R, { m1 }pk(R) );
+            claim(I, Secret, m1);
+        }
+        role R {
+            var X: Ticket;
+
+            recv_1(I,R, { X }pk(R) );
+        }
+    }   
+            </pre
+                >
+                <p>
+                    注意，宏具有全局范围，并且在语法级别处理。这也允许协议消息的全局缩写，例如：
+                </p>
+                <pre>
+
+    hashfunction h;
+    macro m1 = { I,R, nI, h(nI,R) }pk(R);
+    
+    protocol macro-example-two(I,R) {
+        role I {
+            fresh nI: Nonce;
+            send_1(I,R, m1 );
+        }
+        role R {
+            var nI: Nonce;
+
+            recv_1(I,R, m1 );
+        }
+    }
+                </pre>
+                <p>
+                    注意，在上面的示例中，nI是I角色中新生成的nonce，是R角色中的变量。因为宏定义在语法上是展开的，所以同一个宏可以用来引用这两个术语。
+                </p>
+
+                <h3 id="Include">Include</h3>
+                <p>
+                    可以在协议规范中导入其他文件：
+                </p>
+                <pre>
+
+    include "filename";     
+                </pre>
+                <p>
+                    其中filename表示此时将包含的文件的名称。使用此命令，可以在文件之间共享一组通用定义。通常，这将包括密钥结构的定义和（不受信任的）代理名称。可以嵌套使用此命令。
+                </p>
+                <h3 id="one_role_per_agent">
+                    一个角色一个代理
+                </h3>
+                <p>
+                    操作语义允许代理执行任何角色，甚至并行执行多个不同的角色。此建模选择对应于最坏的可能场景，在该场景中，对手有最多的可利用选项。然而，在许多具体的设置中，代理只执行一个角色。例如，服务器集可能与客户端集分离，或者RFID标签集可能与读卡器集分离。在这种情况下，我们不需要考虑利用代理可以执行多个角色的攻击。这可以通过以下语句建模：
+                </p>
+                <pre>
+
+    option "--one-role-per-agent"; // disallow agents in multiple roles  
+                </pre>
+                <p>
+                    这会导致Scyther忽略代理执行多个角色的攻击。叙述不同，这对应于每个角色由一组专用代理执行的情况。
+                </p>
+
+                <h3 id="Language_BNF">BNF语言</h3>
+                <p>
+                    输入语言的完整BNF语法如下所示。在严格的语言定义中，没有Niagree和Nisynch这样的声明术语，也没有任何预定义的类型类，比如Agent。相反，它们是Scyther工具本身预定义的常量
+                </p>
+                <h3 id="Input_file_BNF">输入文件</h3>
+                <p>
+                    输入文件只是spdl结构的列表，它是全局声明或协议描述。
+                </p>
+                <img src="./helpimg/inputBNF.png" alt="" />
+
+                <h3 id="Protocols_BNF">协议</h3>
+                <p>
+                    协议只是一组角色的容器。因为我们使用基于角色的方法来描述角色，所以协议容器实际上只影响角色的命名：协议“ns3”中的角色“I”将在内部分配名称“ns3.I”。这用于使角色名全局唯一。
+                </p>
+                <img src="./helpimg/inputBNF.png" alt="" />
+
+                <h3 id="Roles_BNF">角色</h3>
+                <img src="./helpimg/RolesBNF.png" alt="" />
+
+                <h3 id="Events_BNF">事件</h3>
+                <img src="./helpimg/EventsBNF.png" alt="" />
+
+                <h3 id="Declarations_BNF">声明</h3>
+                <img src="./helpimg/DeclarationsBNF.png" alt="" />
+
+                <h3 id="Terms_BNF">项</h3>
+                <img src="./helpimg/TermsBNF.png" alt="" />
+
+                <h2 id="modeling_security_protocols">安全协议建模</h2>
+                <h3 id="Introduction">介绍</h3>
+                <p>
+                    为了在工具中进行协议分析，安全协议的正确建模需要对底层符号模型有基本的了解。这个模型在[1]中有详细的解释。
+                </p>
+                <p>
+                    大致来说，符号分析主要集中在以下几个方面：
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;•
+                    逻辑消息组件及其在协议中的预期功能（公开与机密、每次运行中新生成或常量）
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;• 消息结构（对、加密、签名、哈希）
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;• 消息流（顺序、相关代理）
+                </p>
+                <p>
+                    许多其他元素被抽象出来。例如，位字符串被抽象成项，以可忽略的概率出现的位字符串被抽象掉，更复杂的控制流结构（如循环）通常被展开（低）有限次。
+                </p>
+                <h3 id="Example">例子：Needham-Schroeder Public Key</h3>
+                <p>
+                    作为一个例子，我们展示了如何给一个简单的协议建模。
+                </p>
+                <p>
+                    下图描述了Needham
+                    Schroeder公钥协议。为了简单起见，我们只显示了每个角色的声明，即发起方nonce
+                    ni是机密的。
+                </p>
+                <img src="./helpimg/NSPK.png" alt="" />
+                <p>
+                    我们从协议描述开始，添加一个描述协议和其他有趣细节的多行注释。多行注释以/*开头，以*/结尾。
+                </p>
+
+                <pre>
+    
+                    /*
+    * Needham-Schroeder protocol
+    */
+                </pre>
+                <p>
+                    协议使用默认的公钥/私钥基础结构：代理A有一个密钥对
+                    （pk（A），sk（A））。
+                </p>
+                <p>
+                    该协议有两个角色：启动者角色I和响应者角色R。我们还添加了一个单行注释，以//开头。
+                </p>
+                <pre>
+
+    // The protocol description
+    protocol ns3(I,R)
+    {
+                    </pre
+                >
+                <p>
+                    Scyther使用基于角色的协议描述。我们首先对发起者角色建模。此角色有两个本地值：I创建的nonce和接收的nonce。我们必须同时申报。
+                </p>
+
+                <pre>
+              
+        role I
+        {
+            fresh ni: Nonce;
+            var nr: Nonce;
+                    </pre
+                >
+                <p>
+                    我们现在对协议的通信行为建模。Needham
+                    Schroeder有三条消息，发起者角色发送其中的第一条和最后一条。注意标签（例如。，
+                    1）
+                    在send和recv关键字的末尾：这些关键字仅用于在消息序列图中保留连接箭头的信息。
+                </p>
+                <pre>
+            
+            send_1(I,R, {I,ni}pk(R) );
+            recv_2(R,I, {ni,nr}pk(I) );
+            send_3(I,R, {nr}pk(R) );
+                </pre>
+                <p>
+                    最后，我们增加了协议的安全性要求。没有这种说法，就不知道要检查什么。
+                </p>
+                <p>
+                    在这里，我们选择检查生成和接收nonce的保密性，并检查非内射协议和同步。
+                </p>
+                <pre>
+
+            claim_i1(I,Secret,ni);
+            claim_i2(I,Secret,nr);
+            claim_i3(I,Niagree);
+            claim_i4(I,Nisynch);
+        }     
+                </pre>
+                <p>
+                    这就完成了发起角色的规范。
+                </p>
+                <p>
+                    对于这个简单的协议，响应者角色非常类似于发起者角色[2]。事实上，只有一些不同：
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 1.
+                    关键字var和fresh交换了位置：ni是由I创建的，在那里有一个新生成的值，但是对于角色R，它是接收的值，因此是一个变量。
+                </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. send和recv关键字交换了位置。</p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 3.
+                    声明应该有唯一的标签，因此它们已经更改，执行声明的角色现在是R而不是I。
+                </p>
+                <p>
+                    响应程序的完整角色描述如下：
+                </p>
+                <pre>
+
+        role R
+        {
+            var ni: Nonce;
+            fresh nr: Nonce;
+            recv_1(I,R, {I,ni}pk(R) );
+            send_2(R,I, {ni,nr}pk(I) );
+            recv_3(I,R, {nr}pk(R) );
+
+            claim_r1(R,Secret,ni);
+            claim_r2(R,Secret,nr);
+            claim_r3(R,Niagree);
+            claim_r4(R,Nisynch);
+        }
+    }
+                </pre>
+
+                <h2 id="specifying_security_properties">安全属性</h2>
+
+                <h3 id="Specifying_secrecy">详述保密</h3>
+                <h3 id="Specifying_authentication_properties">详述认证属性</h3>
+                <h3 id="Aliveness">活性</h3>
+                <h3 id="Non-injective_synchronisation">非内射同步</h3>
+                <h3 id="Non-injective_agreement">非内射一致</h3>
+                <h3 id="Agreement_over_data">数据一致性</h3>
+                <p>
+                    为了指定数据协议，例如角色I在一组项上与角色R一致，例如nonces
+                    ni和nr，一个插入两个声明：
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 1. 在I角色的末尾，插入
+                    claim（I，Commit，R，ni，nr）；
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 2.
+                    在R中，就在最后一次发送之前（如果协议具有多个角色：最后一次发送在I角色中的声明之前），插入claim（R，Running，I，ni，nr）；
+                </p>
+                <p>
+                    有关信号的正式定义，请参见[4]。
+                </p>
+                <h2 id="Using_the_Scyther_tool">使用分析工具</h2>
+                <h3 id="Results">结果</h3>
+                <p>
+                    如前所示，验证Needham
+                    Schroeder公钥协议会产生以下结果，如图所示。
+                </p>
+                <img src="./helpimg/NS3attack.png" alt="" width="400px" />
+                <p>
+                    其解释如下：ns3发起方角色的所有声明，对于无限次的运行，I
+                    都是正确的。
+                </p>
+                <p>
+                    不幸的是，响应者角色的所有声明都是错误的。报告说，它发现至少一个攻击这四个声明。我们可以选择查看这些攻击。
+                </p>
+                <p>
+                    第三栏，信息，用来进一步解释结果的状态。特别是，该列包含一个句子。我们在下面描述可能的结果。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;•至少存在X次攻击
+                    在状态空间中发现了一些攻击：但是，由于问题的不确定性，或者由于搜索的分支和bround结构，我们无法确定是否存在其他攻击状态。
+                    在默认设置中，发现攻击后，将停止验证过程。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;•精确的X攻击
+                    在状态空间中，确实有这么多攻击，而没有其他攻击。
+                </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;•至少X个模式</p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;•精确的 X 个模式
+                    它们与前两个完全对应，但发生在“Reachable”声明的情况下。因此，找到的状态不是真正的攻击，而是可到达状态的状态。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; •边界内无攻击
+                    在有界状态空间内未发现攻击，但有界状态空间外可能存在攻击。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;•无攻击
+                    在（有界或无界）状态空间中未发现攻击，并且可以构造一个证据，证明即使状态空间是无界的也不存在攻击。因此，安全属性已成功验证。
+                    注意，由于算法的性质，这个结果甚至可以在状态空间有界的情况下得到。
+                </p>
+                <h3 id="Bounding_the_statespace">限定状态空间</h3>
+                <p>
+                    在验证过程中，工具探索一个涵盖所有可能的协议行为的证明树。默认设置是以某种方式绑定此树的大小，以确保验证过程终止。然而，重要的是，即使证明树的大小是有界的，也可以实现无界的验证。
+                </p>
+                <p>
+                    在大多数情况下，验证过程将在到达边界之前终止并返回结果。但是，如果验证过程达到界限，则在结果窗口中报告，例如：在界限内无攻击
+                </p>
+
+                <p>
+                    这应该解释为：Scyther没有发现任何攻击，但是因为它到达了边界，所以它没有探索完整的树，并且有可能仍然存在对协议的攻击。
+                </p>
+
+                <h3 id="Attack_graphs">攻击图</h3>
+                <p>
+                    在下图中，我们更详细地显示了一个攻击窗口。
+                </p>
+                <img src="./helpimg/ns3.png" alt="" width="300px" />
+                <p>
+                    基本元素是箭头和几种盒子。图中的箭头表示顺序约束（由协议角色中事件的前缀封闭性或入侵者知识中的依赖性引起）。这些框表示运行的创建、运行的通信事件和声明事件。
+                </p>
+                <h3 id="Runs">运行</h3>
+                <p>
+                    每个垂直轴代表一个运行（协议角色的实例）。因此，在这次攻击中，我们看到有两次涉及。每次跑步都从一个菱形的盒子开始。这表示运行的创建，并用于提供有关运行的信息。
+                </p>
+                <p>
+                    对于攻击中左侧的跑步，我们有以下信息：
+                </p>
+                <pre>
+
+    Run #1  
+    Agent2 in role I
+    I -> Agent2
+    R -> Agent1
+                </pre>
+
+                <p>
+                    每个运行都分配了一个运行标识符（这里是1），它是一个任意数字，使我们能够唯一地标识每个运行。此运行执行协议的R角色。它是由一个叫Agent1的特工执行的，他认为他在和Agent2说话。注意，尽管运行2
+                    被Agent2执行，这个特工不相信他在和特工1说话。
+                </p>
+                <pre>
+
+    Run #2
+    Agent2 in role I
+    I -> Agent2
+    R -> Eve     
+                </pre>
+
+                <p>
+                    在右边的运行中，我们看到这个运行代表了角色I的一个实例。从第二行我们可以看到哪个代理正在执行运行，以及他认为他在和谁说话。在本例中，运行由名为Agent2的代理执行，该代理认为响应者角色由不受信任的代理Eve执行。
+                </p>
+                <p>
+                    此外，运行头还包含新生成值的信息（例如，运行1生成nr#1）和局部变量的实例化信息（例如，运行1使用nonce
+                    ni#2或运行2实例化其变量ni）。
+                </p>
+                <h3 id="Communication events">交流事件</h3>
+                <p>
+                    发送事件表示消息的发送。此攻击中发生的第一次发送是运行2的第一次发送事件。
+                </p>
+                <pre>
+    send_1(Eve, { Agent#0, ni#2 }pk(Eve) )
+                </pre>
+
+                <p>
+                    每次发送消息时，都会有效地将其发送给入侵者。在这种情况下，因为入侵者知道代理Eve的密钥sk（Eve），所以他可以解密消息并了解nonce
+                    ni#2的值。
+                </p>
+                <p>
+                    接收事件对应于成功接收消息。此攻击中可能发生的第一个接收事件是运行0的第一个接收事件。
+                </p>
+                <pre>
+    recv_1(Agent#0, { Agent#0, ni#2 }pk(Agent#1) )               
+                </pre>
+
+                <p>
+                    这告诉我们，执行此运行的代理程序agent#1读取的消息显然来自agent#1。接收到的消息是{Agent#0，ni#2}pk（Agent#1）：他认为正在与之通信的代理的名称和用其公钥加密的nonce
+                    ni#2。
+                </p>
+                <p>
+                    传入箭头不指示直接发送消息。相反，它表示排序约束：此消息只能在发生其他事情之后接收。在这种情况下，我们看到消息只能在run2发送其初始消息之后才能接收。原因是nonce
+                    ni#2：入侵者无法预测这个nonce，因此必须等到运行2生成它。
+                </p>
+                <p>
+                    在图中，连接箭头是红色的，并且带有一个标签“construct”：这是由于发送的消息与接收到的消息不对应造成的。我们知道入侵者只能在发送消息之后构造要接收的消息，因此他必须使用来自发送消息的信息来构造要接收的消息。其他可能性包括绿色和黄色箭头。黄色箭头表示消息是以完全相同的形式发送和接收的：但是，代理不同意向谁发送消息。因此，它被标记为“重定向”，因为入侵者必须重定向了消息。一个绿色箭头（不在图片中），表示收到的消息与发送的消息完全相同，表示两个代理之间的正常消息通信。
+                </p>
+                <p>
+                    注意，没有输入箭头的recv事件表示
+                    接收到可以从对入侵者的初步了解中，没有此类事件
+                    但这种情况经常发生。例如，如果角色读取仅包含代理名称的纯消息，入侵者可以从他最初的知识。
+                </p>
+
+                <h2 id="reference">参考</h2>
+                <p>
+                    [1]
+                    <a href="./pdf/1cremers2012.pdf"
+                        >Cas Cremers and Sjouke Mauw. Operational Semantics and
+                        Veri cation of Security Protocols. Information Security
+                        and Cryptography. Springer, 2012.</a
+                    >
+                </p>
+                <p>
+                    [2]<a href="./pdf/2cremers2006.pdf"
+                        >C.J.F. Cremers. Feasibility of multi-protocol attacks.
+                        In Proc. of The First International Conference on
+                        Availability, Reliability and Security (ARES), pages
+                        287{294, Vienna, Austria, April 2006. IEEE Computer
+                        Society.</a
+                    >
+                </p>
+                <p>
+                    [3]<a href="./pdf/3kelsey1998.pdf"
+                        >J. Kelsey, B. Schneier, and D. Wagner. Protocol
+                        interactions and the chosen protocol attack. In B.
+                        Christianson, B. Crispo, T.M.A. Lomas, and M. Roe,
+                        editors, Fifth International Workshop on Security
+                        Protocols, volume 1361 of LNCS, pages 91{104. Springer,
+                        1997.</a
+                    >
+                </p>
+                <p>
+                    [4]<a
+                        href="./pdf/4a-hierarchy-of-authentication-specifications.pdf"
+                        >G. Lowe. A hierarchy of authentication speci cations.
+                        In Proc. 10th IEEE Computer Security Foundations
+                        Workshop (CSFW), pages 31{44. IEEE, 1997.</a
+                    >
+                </p>
+                <p>[5]<a href="./pdf/5scyther-manual.pdf">Scyther-manual</a></p>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        let left_ul_lis = document.querySelectorAll(".left>ul>li");
+        let left_ul_li_as = document.querySelectorAll(".left>ul>li>a");
+        let left_ul_li_uls = document.querySelectorAll(".left>ul>li>ul");
+        let left_ul_li_a_li_as = document.querySelectorAll(".left>ul>li li a");
+
+        left_ul_li_as.forEach((left_ul_li_a) => {
+            left_ul_li_a.addEventListener("click", function () {
+                left_ul_li_as.forEach((item) => {
+                    //父标签改变check
+                    item.classList.remove("checked");
+                });
+                left_ul_li_a.classList.add("checked");
+
+                left_ul_li_a_li_as.forEach((left_ul_li_a_li_a) => {
+                    //子标签移除checked
+                    left_ul_li_a_li_a.classList.remove("checked");
+                });
+
+                left_ul_lis.forEach((item) => {
+                    //子标签是否展示
+                    let flag = item
+                        .querySelector("li>a")
+                        .classList.contains("checked");
+
+                    if (flag) {
+                        item.querySelector("li>ul").style.display = "block";
+                    } else {
+                        item.querySelector("li>ul").style.display = "none";
+                    }
+                });
+            });
+        });
+
+        left_ul_li_a_li_as.forEach((left_ul_li_a_li_a) => {
+            left_ul_li_a_li_a.addEventListener("click", function () {
+                //子标签click
+                left_ul_li_a_li_as.forEach((item) => {
+                    console.log(item);
+                    item.classList.remove("checked");
+                });
+                left_ul_li_a_li_a.classList.add("checked");
+            });
+        });
+    </script>
+</html>

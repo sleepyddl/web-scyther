@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: rgb(243, 243, 239);
+}
+
+.checked {
+    color: #3eaf7c !important;
+}
+pre {
+    background: rgb(240, 240, 240);
+}
+img {
+    display: block;
+    margin: 0 50px;
+}
+a {
+    padding: 2px 0;
+    color: #2c3e50;
+    text-decoration: none;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    height: 59px;
+    line-height: 59px;
+    border-bottom: solid 3px rgb(23, 160, 182);
+    div {
+        background: url("./logo.svg");
+        background-repeat: no-repeat;
+        width: 1220px;
+        margin: 0 auto;
+        overflow: hidden; //清除浮动
+        background-position: left;
+        background-size: 35px;
+        text-indent: 2.2em;
+        .title {
+            font-size: 1.4em;
+            font-weight: 700;
+            text-decoration: none;
+            color: rgb(23, 160, 182);
+        }
+        .a_help {
+            float: right;
+            color: #333;
+            margin-right: 20px;
+        }
+    }
+}
+.hold {
+    width: 1220px;
+    margin: 0px auto;
+    overflow: hidden;
+    .left,
+    .right {
+        background-color: rgb(247, 247, 247);
+        background-color: white;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border-radius: 0.25rem;
+    }
+    .right {
+        float: right;
+        width: 877px;
+        padding: 80px 20px 0px 20px;
+        h2,
+        h3 {
+            padding-top: 4.6rem;
+            margin-top: -3.6rem;
+            color: #2c3e50;
+        }
+        h2 {
+            border-bottom: 1px solid #eaecef;
+        }
+        p {
+            font-size: 16px;
+            color: #2c3e50;
+            line-height: 1.7;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+    }
+    .left {
+        box-sizing: border-box;
+        padding: 20px;
+        position: fixed;
+        top: 62px;
+        bottom: 0;
+        float: left;
+        width: 280px;
+        background-color: rgb(247, 247, 247);
+        background-color: white;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        overflow: auto;
+        ul {
+            list-style: none;
+            a {
+                display: inline-block;
+                padding: 2px 0;
+                color: #2c3e50;
+                text-decoration: none;
+                &:hover {
+                    color: #3eaf7c;
+                }
+            }
+        }
+
+        & > ul > li {
+            & > a {
+                font-size: 1.1em;
+                line-height: 1.7;
+                font-weight: 700;
+            }
+            & > ul {
+                display: none;
+                & > li {
+                    text-indent: 0.5em;
+                    & > ul > li {
+                        text-indent: 1em;
+                    }
+                }
+            }
+        }
+    }
+}
