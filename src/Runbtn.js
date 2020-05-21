@@ -16,7 +16,7 @@ function handleRun(props) {
     (res) => {
       const data = JSON.parse(res.data)["result"];
       if (data.substring(0, 5) === "error") {
-        window.alert("协议输入有误，系统无法解读");
+        window.alert(data);
         return null;
       }
       analyseReturn(data, props);
