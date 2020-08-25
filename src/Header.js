@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="header">
       <div>
-        <a href="/" className="title">
+        <a href="https://longwayya.github.io/webScyther/" className="title">
           协议分析器
         </a>
 
