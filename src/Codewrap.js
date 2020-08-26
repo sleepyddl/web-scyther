@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import serve from "./api.js";
+console.log(serve)
 let key = 0;
 function id() {
   return String(++key);
@@ -88,15 +90,19 @@ class Select extends React.Component {
     };
     this.changeSelect = this.changeSelect.bind(this);
   }
-
+ 
   changeSelect(e) {
     let value = e.target.value;
     this.setState({ selected: value });
     if (value === "点击选择协议") {
     } else {
-      axios.get(`http://192.168.2.130/protocols/${value}`).then(
+      axios.get(`${serve}/protocols`,{
+        params:{
+          value
+        }
+      }).then(
         (res) => {
-          let protocol = JSON.parse(res.data)["protocol"];
+          let protocol = res.data.protocol;
           document.querySelector("textarea").value = protocol;
           autoTextAreaHeight();
           this.props.changeInput(protocol);

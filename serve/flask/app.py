@@ -112,7 +112,7 @@ class getprotocol(Resource):
 
 
 
-api.add_resource(getprotocol, '/protocols/<name>/')
+api.add_resource( , '/protocols/<name>/')
 
 @app.route('/')
 def hello_world():

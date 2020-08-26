@@ -1,16 +1,20 @@
 import React from "react";
 import axios from "axios";
 import { mark } from "./Runbtn.js";
-
+import serve from "./api"
 let key = 0;
 function id() {
   return String(++key);
 }
 
 function attackChart(property, number, nth) {
-  axios.get(`http://192.168.2.130/charts/${mark}/${number}/${nth}`).then(
+  axios.get(`${serve}/charts`, {
+    params: {
+      mark: mark, number: number, nth: nth
+    }
+  }).then(
     (res) => {
-      let base = JSON.parse(res.data)["picture"];
+      let base = res.data.picture;
       base.forEach((item, index) => {
         const img = new Image();
 
@@ -67,14 +71,14 @@ function Claim(props) {
         {claim.turnout === "成功" ? (
           claim.state
         ) : (
-          <button
-            onClick={() =>
-              attackChart(claim.property, claim.number, claim.nth_of_attack)
-            }
-          >
-            {claim.state}
-          </button>
-        )}
+            <button
+              onClick={() =>
+                attackChart(claim.property, claim.number, claim.nth_of_attack)
+              }
+            >
+              {claim.state}
+            </button>
+          )}
       </span>
     </li>
   );
