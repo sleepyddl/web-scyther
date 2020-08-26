@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### demo地址  
-http://longwayya.github.io/webscyther/
+http://longwayya.github.io/webScyther/
 ### 使用文档  
 https://longwayya.github.io/webScyther/help/help.html
 ## Available Scripts
