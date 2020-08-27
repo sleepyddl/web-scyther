@@ -11,6 +11,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+// app.all('*', function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   res.header('Access-Control-Allow-Methods', '*');
+//   res.header('Content-Type', 'application/json;charset=utf-8');
+//   next();
+// });
+
 
 
 
@@ -82,5 +90,5 @@ app.get("/scyther/charts", (req, res) => {
 
 
 app.listen(8081, () => {
-  console.log('127.0.0.1:8081');
+  console.log('running in 127.0.0.1:8081');
 });
